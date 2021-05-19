@@ -2,9 +2,9 @@ exports.handler = async (event, context) => {
   // the context of the request
   // determine if the user is logged in
   const guides = [
-    { title: "asdlfasd fljaksdf lasjfd asdlkfjasdf", author: "bong" },
-    { title: "asdlfasd fljaksdf lasjfd asdlkfjasdf", author: "dong" },
-    { title: "asdlfasd fljaksdf lasjfd asdlkfjasdf", author: "cun" },
+    { title: "assdfdlfasd fljaksdf lasjfd asdlkfjasdf", author: "bong" },
+    { title: "asdlffffasd fljaksdf lasjfd asdlkfjasdf", author: "dong" },
+    { title: "asdlfaaaasd fljaksdf lasjfd asdlkfjasdf", author: "cun" },
   ];
 
   // if browser makes request from user logged in
