@@ -26,7 +26,7 @@ export default function Navbar() {
             </li>
             {!user && (
               <li onClick={login} className="btn">
-                Login/Signup
+                Login
               </li>
             )}
             {user && <li>{user.email}</li>}
