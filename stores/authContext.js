@@ -15,6 +15,7 @@ const AuthContextProvider = ({ children }) => {
   // keep track of current user with state hook
   // user is not logged in
   const [user, setUser] = useState(null);
+  const [authReady, setAuthReady] = useState(false);
 
   useEffect(() => {
     netlifyIdentity.on("login", (user) => {
@@ -27,6 +28,13 @@ const AuthContextProvider = ({ children }) => {
       setUser(null);
       netlifyIdentity.close();
       console.log("logout event");
+    });
+
+    // event listener for authReady
+    netlifyIdentity.on("init", (user) => {
+      setUser(user);
+      setAuthReady(true);
+      console.log("init event");
     });
 
     // init netlify identity connection
@@ -49,7 +57,7 @@ const AuthContextProvider = ({ children }) => {
     netlifyIdentity.logout();
   };
 
-  const context = { user, login, logout };
+  const context = { user, login, logout, authReady };
 
   return (
     <AuthContext.Provider value={context}>{children}</AuthContext.Provider>
