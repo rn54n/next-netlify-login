@@ -18,7 +18,7 @@ export default function Guides() {
         .then((res) => res.json())
         .then((data) => console.log(data));
     }
-  }, [user]);
+  }, [user, authReady]);
 
   return (
     <div className={styles.guides}>
