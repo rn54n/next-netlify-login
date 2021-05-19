@@ -1,6 +1,7 @@
 // keep track of authenticated users
 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import netlifyIdentity from "netlify-identity-widget";
 
 export const AuthContext = createContext({
   user: null,
@@ -9,10 +10,16 @@ export const AuthContext = createContext({
   authReady: false,
 });
 
+// component to wrap provider
 export const AuthContextProvider = ({ children }) => {
   // keep track of current user with state hook
   // user is not logged in
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // init netlify identity connection
+    netlifyIdentity.init();
+  }, []);
 
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 };
